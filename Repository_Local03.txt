@@ -1,2 +1,2 @@
 Today is Dec. 13, 2018
-file 3 in firstBranch
+file 3 in firstBranch ...
