@@ -1,0 +1,5 @@
+body, li, th, td, label {font-family:Verdana,Arial,sans-serif; font-size:small;}
+input, select, textarea {font-family:Verdana,Arial,sans-serif; font-size:x-small;}
+caption {font-family:Arial,sans-serif; font-size:medium; font-weight:bold; padding:5px}
+.heading {font-family:Arial,sans-serif; font-size:large; font-weight:bold}
+.cite {font-family:Tahoma,Arial,sans-serif; font-size:xx-small}

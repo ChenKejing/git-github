@@ -1,0 +1,10 @@
+---------------------------------------------------------------------
+Note: the Contact and Links pages are provided in the skeleton folder
+of the samples. However, these will not compile as they are (causing
+an error when you try an run the site) until you have built the Master
+Page for the site. For this reason, the files Links.aspx and
+Contact.aspx have an extra ~ character are the end of the filename
+to prevent VWD from trying to complie them. Once the page PPQ.master
+is complete, at the end of Chapter 2, you can remove the trailing
+"~" from these two page file names and they will appear in the site.
+---------------------------------------------------------------------

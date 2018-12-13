@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ppq-delivery-areas>
+  <delivery-area id="1" name="Uptown" delivery-cost="2.5" />
+  <delivery-area id="2" name="Downtown" delivery-cost="3.5" />
+  <delivery-area id="3" name="Middletown" delivery-cost="3" />
+  <delivery-area id="4" name="Out of town" delivery-cost="5.5" />
+  <delivery-area id="5" name="Wrong side of the tracks" delivery-cost="7.5" />
+  <delivery-area id="6" name="Out of State" delivery-cost="15" />
+</ppq-delivery-areas>
+
+

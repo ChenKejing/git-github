@@ -1,0 +1,13 @@
+    <asp:Label ID="CreateOrderSuccessLabel" runat="server" Visible="false">
+        Our trusty delivery boy is at this moment donning <br />
+        his crash helmet, ready to leap aboard his skateboard to head to your residence.<br />
+        Remember that if the delivery doesn't arrive within the alloted time you'll get<br />
+        a full refund and the boss will personally take a helicopter to your door to ensure it<br />
+        gets there.
+    </asp:Label>
+    
+    <asp:Label ID="CreateOrderErrorLabel" runat="server" Visible="false">
+        We're sorry but something appears to have gone wrong with the creation of that order.<br />
+        Please give us a ring and will place it on high priority.
+    </asp:Label>
+    

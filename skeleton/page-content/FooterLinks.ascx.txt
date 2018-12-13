@@ -1,0 +1,9 @@
+------------------------------------------------------------------------------
+This is the content for the <Repeater> control in the page FooterLinks.ascx.
+Copy and paste it inside the existing <Repeater> and </Repeater> tags.
+------------------------------------------------------------------------------
+
+    <ItemTemplate>
+      <a href='<%#XPath("@url")%>' title='<%#XPath("@description")%>'><%#XPath("@title")%></a>
+    </ItemTemplate>
+    <SeparatorTemplate> | </SeparatorTemplate>

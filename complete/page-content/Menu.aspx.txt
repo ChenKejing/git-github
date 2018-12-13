@@ -1,0 +1,19 @@
+------------------------------------------------------------------------------
+This is the content for the <ItemTemplate> section in the page ShowMenu.aspx.
+Copy and paste it in Design view directly after the </SeparatorTemplate> tag.
+------------------------------------------------------------------------------
+
+		<ItemTemplate>
+      <asp:Image ID="Image4" runat="server" ImageAlign="Left" style="margin: 5px 10px 5px 0px"
+           ImageUrl='<%# Eval("GraphicFileName", "images/{0}") %>' AlternateText='<%# Eval("ItemName") %>' />
+      <asp:Label ID="Label2" runat="server" Text='<%# Eval("MenuItemType") %>' Font-Bold="True" Font-Size="1.2em" /> -
+      <asp:Label ID="Label3" runat="server" Text='<%# Eval("ItemName") %>' Font-Bold="True" Font-Size="1.2em" /><br />
+      <asp:Label ID="Label4" runat="server" Text='<%# Eval("PizzaToppings", "Generously topped with {0}.") %>' />
+      <asp:Label ID="Label5" runat="server" Text='<%# Eval("Description") %>' />.<br />
+      <asp:Repeater ID="Repeater1" runat="server" DataSource='<%# CType(Container.DataItem, DataRowView).CreateChildView("MenuLink") %>'>
+        <ItemTemplate>
+          <span style="color: Firebrick">
+            <%# Eval("ItemSize") %>: <%#Eval("ItemPrice", "${0:F2}")%> &nbsp;</span>
+        </ItemTemplate>
+      </asp:Repeater>
+		</ItemTemplate>

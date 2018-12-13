@@ -1,0 +1,127 @@
+Imports Microsoft.VisualBasic
+Imports System.Data
+Imports System.Data.SqlClient
+Imports System.Collections.Generic
+
+''' <summary>
+''' The layer between the shopping cart and the storage location of the cart
+''' </summary>
+''' <remarks>The cart is stored in the session. Unlike many shopping carts, choice of a Pizza is fairly
+''' ephemeral, so doesn't need long-lived storage</remarks>
+Public Class StoredShoppingCart
+
+    ''' <summary>
+    ''' Read the shopping cart from its storage location
+    ''' </summary>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Shared Function Read() As ShoppingCart
+
+        Return FetchCart()
+
+    End Function
+
+    ''' <summary>
+    ''' Update the delivery charge of the cart
+    ''' </summary>
+    ''' <param name="DeliveryCharge"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Shared Function Update(ByVal DeliveryCharge As Decimal) As Integer
+
+        Dim cart As ShoppingCart = FetchCart()
+
+        cart.DeliveryCharge = DeliveryCharge
+
+    End Function
+
+#Region "Cart Items"
+
+    ''' <summary>
+    ''' Read the cart items from their storage location
+    ''' </summary>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Shared Function ReadItems() As List(Of CartItem)
+
+        Dim cart As ShoppingCart = FetchCart()
+
+        Return cart.Items
+
+    End Function
+
+    ''' <summary>
+    ''' Update the quantity required for the cart item
+    ''' </summary>
+    ''' <param name="MenuItemID"></param>
+    ''' <param name="ItemSize"></param>
+    ''' <param name="Quantity"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Shared Function UpdateItem(ByVal MenuItemID As Integer, ByVal ItemSize As String, ByVal Quantity As Integer) As Integer
+
+        Dim cart As ShoppingCart = FetchCart()
+
+        cart.Update(MenuItemID, ItemSize, Quantity)
+
+    End Function
+
+    ''' <summary>
+    ''' Delete the cart item
+    ''' </summary>
+    ''' <param name="MenuItemID"></param>
+    ''' <param name="ItemSize"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Shared Function DeleteItem(ByVal MenuItemID As Integer, ByVal ItemSize As String) As Integer
+
+        Dim cart As ShoppingCart = FetchCart()
+
+        cart.Delete(MenuItemID, ItemSize)
+
+    End Function
+
+    ''' <summary>
+    ''' Insert an item into the cart
+    ''' </summary>
+    ''' <param name="MenuItemID"></param>
+    ''' <param name="ItemName"></param>
+    ''' <param name="ItemSize"></param>
+    ''' <param name="Quantity"></param>
+    ''' <param name="ItemPrice"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Shared Function InsertItem(ByVal MenuItemID As Integer, ByVal ItemName As String, ByVal ItemSize As String, ByVal Quantity As Integer, ByVal ItemPrice As Decimal) As Integer
+
+        Dim cart As ShoppingCart = FetchCart()
+
+        cart.Insert(MenuItemID, ItemSize, ItemName, ItemPrice, Quantity)
+
+    End Function
+
+#End Region
+
+    ''' <summary>
+    ''' Fetch the cart from it's storage location
+    ''' </summary>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Private Shared Function FetchCart() As ShoppingCart
+
+        ' Fetch the cart from the session
+        Dim cart As ShoppingCart = DirectCast(HttpContext.Current.Session("Cart"), ShoppingCart)
+
+        ' If it isn't in the session, then create a new cart
+        ' and place it in the session
+        If cart Is Nothing Then
+            cart = New ShoppingCart()
+            HttpContext.Current.Session("Cart") = cart
+        End If
+
+        Return cart
+
+    End Function
+
+
+End Class
+
